@@ -1,4 +1,4 @@
-import User from "../../models/UserModel.js";
+import User from "../models/Usermodel.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -6,7 +6,9 @@ dotenv.config();
 export const login = async (req, res) => {
     try {
       // get email and password from request body
+
       const { email, password } = req.body;
+      console.log(req.body)
   
       const user = await User.findOne({ email });
 
