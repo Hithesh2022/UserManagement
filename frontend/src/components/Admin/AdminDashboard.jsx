@@ -15,7 +15,7 @@ const Dashboard = () => {
       const token = localStorage.getItem('authToken');
 
       try {
-        const response = await axios.get('http://localhost:5000/auth/Admin/login/getdetails', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/Admin/login/getdetails`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/signup', {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/signup`, {
         name,
         email,
         phonenumber,
