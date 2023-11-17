@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import './Login.css'; // Import your CSS file for styling
 
 const Login = ({ authenticate }) => {
   const [email, setEmail] = useState('');
@@ -16,10 +17,9 @@ const Login = ({ authenticate }) => {
 
       if (response.status === 200) {
         const data = response.data;
-        authenticate(data.token); // Call authenticate function to store token
+        authenticate(data.token);
         setAuthenticated(true);
       } else {
-        // Handle error response
         console.error('Authentication failed:', response.status, response.data);
       }
     } catch (error) {
@@ -32,8 +32,8 @@ const Login = ({ authenticate }) => {
   }
 
   return (
-    <div>
-      <>
+    <div className="login-container">
+      <div className="login-content">
         <h2>Login</h2>
         <form>
           <label>
@@ -44,7 +44,6 @@ const Login = ({ authenticate }) => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-          <br />
           <label>
             Password:
             <input
@@ -53,12 +52,11 @@ const Login = ({ authenticate }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <br />
           <button type="button" onClick={handleLogin}>
             Login
           </button>
         </form>
-      </>
+      </div>
     </div>
   );
 };

@@ -5,10 +5,9 @@ dotenv.config();
 
 export const signup = async (req, res) => {
     try {
-
+      
       // get name and pasword fields from request body
-      const { name, password } = req.body;
-
+      const { name, password } = req.body
       
       // Validate that name is at least three characters long
       if (!name || name.length < 3)
