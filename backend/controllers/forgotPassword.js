@@ -29,8 +29,8 @@ const generatePasswordResetToken = async (email) => {
   // send password reset token
   const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
   const emailOptions = {
-    from: "hith68616@gmail.com",
-    subject: "Password Reset for SnapURL",
+    from: "",
+    subject: "",
     recipient: email,
     html: `Click <a href="${resetLink}">here</a> to reset your password.`,
   };
