@@ -28,6 +28,7 @@ app.use(
     // store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
+/*
 app.use((req, res, next) => {
   console.log(`Incoming request at ${new Date().toLocaleString()}`);
   console.log(`Request method: ${req.method}`);
@@ -35,7 +36,7 @@ app.use((req, res, next) => {
   console.log(`Request headers:`, req.headers);
   console.log(`Request body:`, req.body);
   next();
-});
+});*/
 
 app.use(passport.initialize());
 app.use(passport.session());
