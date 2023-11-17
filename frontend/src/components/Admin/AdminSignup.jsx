@@ -1,3 +1,5 @@
+import 'react-notifications/lib/notifications.css'; // Import the CSS file
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -24,8 +26,10 @@ const Signup = () => {
 
       if (response.status === 200) {
         console.log('Registration successful');
-        navigate('/');
+        NotificationManager.success('Registration Successful', 'Success', 2000);
+        navigate('/admin/login');
       } else {
+        NotificationManager.error('Error during registration', 'Error', 2000);
         console.error('Registration failed');
       }
     } catch (error) {
@@ -35,6 +39,7 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
+        <NotificationContainer />
       <h2>Sign up</h2>
       <form onSubmit={handleSignup}>
         <label>Username:</label>

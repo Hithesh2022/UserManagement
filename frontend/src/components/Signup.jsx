@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import 'react-notifications/lib/notifications.css'; // Import the CSS file
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import React from 'react';
 
 import './Signup.css'; // Import your CSS file
 
 const Signup = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phonenumber, setMobileNumber] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phonenumber, setMobileNumber] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -24,18 +26,21 @@ const Signup = () => {
 
       if (response.status === 200) {
         console.log('Registration successful');
-        navigate('/');
+        NotificationManager.success('Registration Successful', 'Success', 2000);
+        navigate('/login');
       } else {
         console.error('Registration failed');
       }
     } catch (error) {
       console.error('Error during registration', error);
+      NotificationManager.error('Error during registration', 'Error', 2000);
     }
   };
 
   return (
     <div className="signup-container">
       <h2>Sign up</h2>
+      <NotificationContainer />
       <form onSubmit={handleSignup}>
         <label>Username:</label>
         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
@@ -51,6 +56,7 @@ const Signup = () => {
 
         <button type="submit">Sign Up</button>
       </form>
+     
     </div>
   );
 };
